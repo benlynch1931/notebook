@@ -18,14 +18,28 @@ describe NoteBook do
     end
 
 
-    it 'stores note to notes array' do
+    it 'stores note to notes array with tag' do
       subject.create_note
-      expect(subject.note_list).to eq ["This is my first note!"]
+      expect(subject.note_list).to eq [{text: "This is my first note!", tag: "Tuesday"}]
     end
 
     it 'adds a tag to note' do
       subject.create_note
       expect(subject.note_tag).to eq("Tuesday")
+    end
+
+  end
+
+  describe '#search_by_category' do
+
+    before do
+      allow(subject).to receive(:gets).and_return("This is my first note!", "Tuesday", "This is my second note!", "Tuesday", "This is my third note!", "Tuesday", "Tuesday")
+    end
+
+    it "prints all notes with same tag" do
+      3.times { subject.create_note }
+      message = "Enter category to search by: \nTuesday: This is my first note!\nTuesday: This is my second note!\nTuesday: This is my third note!\n"
+      expect { subject.search_by_category }.to output(message).to_stdout
     end
   end
 end
