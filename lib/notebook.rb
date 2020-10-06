@@ -6,5 +6,8 @@ class NoteBook
   end
 
   def create_note
+    puts "Enter your note: "
+    note_input = gets.chomp
+    puts note_input
   end
 end
