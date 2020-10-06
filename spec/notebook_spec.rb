@@ -42,4 +42,18 @@ describe NoteBook do
       expect { subject.search_by_category }.to output(message).to_stdout
     end
   end
+
+    describe '#search_by_category' do
+
+      before do
+        allow(subject).to receive(:gets).and_return("This is my first note!", "Tuesday", "This is my second note!", "Wednesday", "This is my third note!", "Thursday", "Tuesday")
+      end
+
+    it "prints all note with same tag when more than 1 tag in list" do
+      3.times { subject.create_note }
+      message = "Enter category to search by: \nTuesday: This is my first note!\n"
+      expect { subject.search_by_category }.to output(message).to_stdout
+    end
+
+  end
 end
