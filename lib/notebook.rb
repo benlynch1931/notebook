@@ -8,6 +8,6 @@ class NoteBook
   def create_note
     puts "Enter your note: "
     note_input = gets.chomp
-    puts note_input
+    @note_list.push(note_input)
   end
 end

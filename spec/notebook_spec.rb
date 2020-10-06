@@ -17,8 +17,10 @@ describe NoteBook do
       expect(subject).to respond_to(:create_note)
     end
 
-    it 'creates a note' do
-      expect { subject.create_note }.to output("Enter your note: \nThis is my first note!\n").to_stdout
+
+    it 'stores note to notes array' do
+      subject.create_note
+      expect(subject.note_list).to eq ["This is my first note!"]
     end
   end
 end
