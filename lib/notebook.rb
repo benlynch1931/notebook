@@ -4,4 +4,7 @@ class NoteBook
   def initialize
     @note_list = []
   end
+
+  def create_note
+  end
 end
