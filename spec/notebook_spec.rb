@@ -9,7 +9,7 @@ describe NoteBook do
   describe '#create_note' do
 
     before do
-      allow(subject).to receive(:gets).and_return("This is my first note!")
+      allow(subject).to receive(:gets).and_return("This is my first note!", "Tuesday")
     end
 
     it 'responds when called' do
@@ -21,6 +21,11 @@ describe NoteBook do
     it 'stores note to notes array' do
       subject.create_note
       expect(subject.note_list).to eq ["This is my first note!"]
+    end
+
+    it 'adds a tag to note' do
+      subject.create_note
+      expect(subject.note_tag).to eq("Tuesday")
     end
   end
 end
