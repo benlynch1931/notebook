@@ -1,24 +1,12 @@
 class NoteBook
-  attr_reader :note_list, :note_tag
+  attr_reader :note_list
 
-  def initialize
+  def initialize(note)
     @note_list = []
+    @note = note
   end
 
   def create_note
-    puts "Enter your note: "
-    @note_input = gets.chomp
-    puts "Enter the tag for the note: "
-    @note_tag = gets.chomp
-    @note_list.push({tag: @note_tag, text: @note_input})
+    @note_list.push(@note.create_note)
   end
-
-  def search_by_category
-    puts "Enter category to search by: "
-    category = gets.chomp
-    @note_list.each { |note|
-      puts "#{note[:tag]}: #{note[:text]}" if note[:tag] == category
-    }
-  end
-
 end
